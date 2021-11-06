@@ -89,6 +89,7 @@ export const TodoList = () => {
                     ) : (
                       <>
                         <div className="name">{info.name}</div>
+                        <div className="time">{info.time}</div>
                       </>
                     )}
                     {editingMode ? (

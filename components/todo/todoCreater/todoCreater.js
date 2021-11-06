@@ -15,8 +15,10 @@ export const TodoCreater = ({ data, setData, hideCreater }) => {
 
   // Функция отправки объекта с содержанием в бэк
   const sendData = () => {
+    // Объект с текстом и временем отправки
     const object = {
       name: value,
+      time: new Date().toLocaleString()
     };
     axios.post("https://61851c6723a2fe0017fff39d.mockapi.io/todos", object);
     
