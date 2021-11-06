@@ -1,0 +1,82 @@
+.todoCreater{
+    display: flex;
+
+}
+.todoCreaterShell{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 350px;
+    height: 350px;
+    background: blue;
+    border: 1px solid red;
+    box-shadow: 0 0 10px rgba(100, 255, 255, .85);
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+
+}
+
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, .1);
+    z-index: 1;
+
+
+}
+
+.todoCreaterContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todoCreaterContent img{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    height: 20px;
+    width: 20px;
+}
+
+.todoCreaterTitleName{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.todoCreaterContent div + div{
+    margin-top: 25%;
+}
+
+.todoCreaterContent input{
+    width: 150%;
+    height: 30px;
+    outline: none;
+    margin-left: -25%;
+    border-radius: 5px;
+
+}
+
+.todoCreaterCreateButton{
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: magenta;
+    color: black;
+    transition: .35s;
+    
+
+}
+
+.todoCreaterCreateButton:hover{
+    background: black;
+    color: magenta;
+    
+}

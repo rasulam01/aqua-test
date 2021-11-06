@@ -1,0 +1,53 @@
+.todoList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.todoListShell{
+    display: flex;
+    min-height: 350px;
+    width: 350px;
+    border: 1px solid yellowgreen;    
+    justify-content: center;
+    padding: 15px;
+}
+
+.todoListContent{
+    width: 100%;
+}
+
+.todoListTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    width: 100%;
+}
+
+.todoListTitleName{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.todoListContent img{
+    height: 24px;
+    width: 24px;
+    cursor: pointer;        
+}
+
+.todoListDataContent{
+    list-style-type: none;
+    
+    border: 1px solid transparent;
+    width: 100%;
+}
+.todoListDataContent span img{
+    float: right;
+    
+}
+.todoListDataContent span img + img{
+    margin-right: 12px;
+    
+}
