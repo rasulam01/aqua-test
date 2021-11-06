@@ -1,30 +1,31 @@
 import "./todoCreater.css";
 import { useState } from "react";
-
 import Closer from "../../../assets/close_button.png";
 import axios from "axios";
 
 export const TodoCreater = ({ data, setData, hideCreater }) => {
   const [value, setValue] = useState("");
+  // Переменные
 
+  // Контролируемый инпут
   const changeValue = (e) => {
     setValue(e.target.value);
   };
 
+
+  // Функция отправки объекта с содержанием в бэк
   const sendData = () => {
     const object = {
       name: value,
     };
-    axios.post('https://61851c6723a2fe0017fff39d.mockapi.io/todos', object)
+    axios.post("https://61851c6723a2fe0017fff39d.mockapi.io/todos", object);
     
-      const temp = [...data]
-      temp.push(object)
-      setData(temp)
-      localStorage.setItem('data', JSON.stringify([...data], object))  
-    }
+    // Добавление объекта в массив с целью вызвать ре-рендер
+    const temp = [...data];
+    temp.push(object);
+    setData(temp);
     
-      
-  
+  };
 
   return (
     <>
@@ -45,7 +46,9 @@ export const TodoCreater = ({ data, setData, hideCreater }) => {
               />
             </div>
             <div>
-              <button className="todoCreaterCreateButton" onClick={sendData}>Create</button>
+              <button className="todoCreaterCreateButton" onClick={sendData}>
+                Create
+              </button>
             </div>
           </div>
         </div>

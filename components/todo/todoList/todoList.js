@@ -4,35 +4,26 @@ import Edit from "../../../assets/edit.png";
 import Delete from "../../../assets/delete.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
 import { TodoCreater } from "../todoCreater/todoCreater";
 
+// Здесь расположен основной файл
+
 export const TodoList = () => {
-  const [data, setData] = useState([])
+  // Объявляются переменные
+  const [data, setData] = useState([]);
   const [createrVisible, setCreaterVisible] = useState(false);
   const [editingMode, setEditingMode] = useState(null);
   const [editingModeValue, setEditingModeValue] = useState("");
 
+  // Получаем данные с бэка
   const getData = async () => {
     const response = await axios.get(
       "https://61851c6723a2fe0017fff39d.mockapi.io/todos"
     );
-    
-      setData(response.data);
-      
-
-      
-    
-    
-    
-    
-    
-        
-    
+    setData(response.data);
   };
-  
-  
 
+  // Функция редактирования
   const editData = (id) => {
     const updatedData = [...data].map((info) => {
       if (info.id === id) {
@@ -45,23 +36,20 @@ export const TodoList = () => {
     setEditingModeValue("");
   };
 
+  // Функция удаления
   const deleteData = (id) => {
     axios.delete(`https://61851c6723a2fe0017fff39d.mockapi.io/todos/${id}`);
     const filtered = [...data].filter((item) => item.id !== id);
     console.log(data);
-    setData(filtered); 
-    // let local = JSON.parse(localStorage.getItem('data'))
-    // local.splice(id, 1)
-    // localStorage.setItem('data', JSON.stringify(local))
-    // if (local.length === 0) {
-    //     localStorage.removeItem('data')
-    // }       
+    setData(filtered);
   };
 
+  // Делаем инпут контролируемым
   const setEditingValue = (e) => {
     setEditingModeValue(e.target.value);
   };
 
+  // Рычаги видимости модального окна создания целей
   const showCreater = () => {
     setCreaterVisible(true);
   };
@@ -70,11 +58,9 @@ export const TodoList = () => {
     setCreaterVisible(false);
   };
 
+  // Запускаем получение данных при маунте компонента
   useEffect(() => {
     getData();
-    
-
-    
   }, []);
 
   return (
@@ -136,7 +122,11 @@ export const TodoList = () => {
       </div>
       {createrVisible ? (
         <>
-          <TodoCreater data={data} setData={setData} hideCreater={hideCreater} />
+          <TodoCreater
+            data={data}
+            setData={setData}
+            hideCreater={hideCreater}
+          />
           <div className="cover" onClick={hideCreater} />
         </>
       ) : null}

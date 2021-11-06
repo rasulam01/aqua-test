@@ -1,11 +1,12 @@
 import './App.css';
-import { TodoWrapper } from './components/todo/todoWrapper'
+import { TodoList } from './components/todo/todoList/todoList'
 
+// Здесь собирается приложение
 
 function App() {
   return (
     <>
-      <TodoWrapper />
+      <TodoList />
     </>
   );
 }
