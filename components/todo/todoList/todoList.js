@@ -36,6 +36,8 @@ export const TodoList = () => {
     setEditingModeValue("");
   };
 
+  
+
   // Функция удаления
   const deleteData = (id) => {
     axios.delete(`https://61851c6723a2fe0017fff39d.mockapi.io/todos/${id}`);
@@ -75,7 +77,18 @@ export const TodoList = () => {
               </div>
             </div>
             <div className="todoListData">
-              {data.map((info) => (
+              {data.map((info) => {
+                  // Функция обновления статуса цели
+                  const updateData = (id) => {
+                    axios.put(`https://61851c6723a2fe0017fff39d.mockapi.io/todos/${id}`, {done: !info.done})
+                    .then(() => {
+                        getData()
+                    })
+                    
+                    
+                    console.log(info.done);
+                }
+                  return (
                 <>
                   <li key={info.id} className="todoListDataContent">
                     {editingMode === info.id ? (
@@ -87,10 +100,11 @@ export const TodoList = () => {
                         />
                       </>
                     ) : (
-                      <>
-                        <div className="name">{info.name}</div>
-                        <div className="time">{info.time}</div>
-                      </>
+                      <div style={{ borderRight: info.done ? '7.5px solid lightgreen' : '7.5px solid darkred' }}>
+                        <div className="name" >{info.name}</div>
+                        <div className="time">{info.time}</div><button onClick={() => updateData(info.id)}>{info.done ? 'Отметить как невыполненное' : 'Отметить как выполненное'}</button>
+                        
+                      </div>
                     )}
                     {editingMode ? (
                       <img
@@ -116,7 +130,7 @@ export const TodoList = () => {
                     />
                   </li>
                 </>
-              ))}
+              )})}
             </div>
           </div>
         </div>

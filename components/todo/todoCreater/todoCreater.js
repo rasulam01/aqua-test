@@ -5,6 +5,7 @@ import axios from "axios";
 
 export const TodoCreater = ({ data, setData, hideCreater }) => {
   const [value, setValue] = useState("");
+  const [done, setDone] = useState(false);
   // Переменные
 
   // Контролируемый инпут
@@ -12,21 +13,20 @@ export const TodoCreater = ({ data, setData, hideCreater }) => {
     setValue(e.target.value);
   };
 
-
   // Функция отправки объекта с содержанием в бэк
   const sendData = () => {
-    // Объект с текстом и временем отправки
+    // Объект: 1) name - текст; 2) time: время на момент создания; 3) done - состояние. В клиенте отображается полосой справа.
     const object = {
       name: value,
-      time: new Date().toLocaleString()
+      time: new Date().toLocaleString(),
+      done: done,
     };
     axios.post("https://61851c6723a2fe0017fff39d.mockapi.io/todos", object);
-    
+
     // Добавление объекта в массив с целью вызвать ре-рендер
     const temp = [...data];
     temp.push(object);
     setData(temp);
-    
   };
 
   return (
