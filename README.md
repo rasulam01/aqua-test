@@ -7,6 +7,6 @@ This task is done using following technologies:
 3. Types of requests: 
 
 3.1) GET (getData)
-3.2) POST (postData)
+3.2) POST (sendData)
 3.3) DELETE (deleteData)
 3.4) PUT (updateData)
